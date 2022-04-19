@@ -1,0 +1,9 @@
+node_modules/
+build/
+coverage/
+.scannerwork/
+
+# System Files
+.DS_Store
+Thumbs.db
+cucumber-report.html

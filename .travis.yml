@@ -1,0 +1,25 @@
+language: node_js
+node_js:
+ - 16.14.2
+cache: npm
+
+install: 
+ - npm install
+
+
+script:
+ - npm run test
+ - npm run build
+ - cp ./package.json ./build
+ - cp ./package-lock.json ./build
+
+before_deploy: 
+ - tar -czvf ./dist/battleship.tar.gz ./build/
+deploy: 
+ provider: pages
+ skip-cleanup: true
+ github-token: $GITHUB_TOKEN
+ local_dir: dist
+
+ on:
+  branch: main
